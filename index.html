@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Rural Digital Access Bridge</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f4f4;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#111;
+color:white;
+padding:20px;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.hero{
+height:500px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(45deg,#007cf0,#00dfd8);
+color:white;
+text-align:center;
+animation:fade 2s;
+}
+
+button{
+padding:12px 25px;
+background:white;
+border:none;
+font-size:16px;
+cursor:pointer;
+border-radius:5px;
+}
+
+.features{
+display:flex;
+justify-content:center;
+gap:30px;
+padding:50px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.2);
+width:250px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.section{
+text-align:center;
+padding:50px;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* Chatbot */
+
+.chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:260px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+.chat-header{
+background:#007cf0;
+color:white;
+padding:10px;
+text-align:center;
+}
+
+#chat-box{
+height:150px;
+overflow:auto;
+padding:10px;
+font-size:14px;
+}
+
+#chat-input{
+width:100%;
+border:none;
+border-top:1px solid #ccc;
+padding:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h2>Rural Digital Access Bridge</h2>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Services</a>
+<a href="#">Dashboard</a>
+<a href="#">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Bridging the Digital Divide</h1>
+
+<p>Connecting rural communities to healthcare, education and internet access.</p>
+
+<button>Explore Project</button>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+
+<h3>Telemedicine</h3>
+
+<p>Consult doctors remotely using digital kiosks.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Digital Education</h3>
+
+<p>Offline learning tablets for rural students.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Community WiFi</h3>
+
+<p>Solar powered internet hubs.</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Project Impact</h2>
+
+<canvas id="chart"></canvas>
+
+</section>
+
+<footer>
+
+<p>Hackathon Project 2026</p>
+
+</footer>
+
+<!-- Chatbot -->
+
+<div class="chatbot">
+
+<div class="chat-header">Rural Help Bot</div>
+
+<div id="chat-box"></div>
+
+<input id="chat-input" placeholder="Ask about health, education..." onkeypress="chat(event)">
+
+</div>
+
+<script>
+
+const ctx=document.getElementById("chart")
+
+new Chart(ctx,{
+type:"bar",
+data:{
+labels:["Consultations","Students","Villages"],
+datasets:[{
+label:"Impact",
+data:[1200,800,25]
+}]
+}
+})
+
+function chat(e){
+
+if(e.key==="Enter"){
+
+let input=document.getElementById("chat-input")
+let msg=input.value.toLowerCase()
+
+let box=document.getElementById("chat-box")
+
+box.innerHTML+="<p><b>You:</b> "+msg+"</p>"
+
+let reply="I did not understand."
+
+if(msg.includes("health")){
+
+reply="You can consult doctors through telemedicine kiosks."
+
+}
+
+else if(msg.includes("education")){
+
+reply="Students can learn using offline tablets."
+
+}
+
+else if(msg.includes("internet")){
+
+reply="Solar powered WiFi hubs provide internet."
+
+}
+
+box.innerHTML+="<p><b>Bot:</b> "+reply+"</p>"
+
+input.value=""
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
